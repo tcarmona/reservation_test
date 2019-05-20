@@ -12,7 +12,7 @@ bundle: reservation
 mode: default
 content:
   field_email:
-    weight: 7
+    weight: 1
     settings:
       size: 60
       placeholder: ''
@@ -20,7 +20,7 @@ content:
     type: string_textfield
     region: content
   field_event:
-    weight: 8
+    weight: 2
     settings:
       match_operator: CONTAINS
       size: 60
@@ -28,28 +28,14 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
-  langcode:
-    type: language_select
-    weight: 2
-    region: content
-    settings:
-      include_locked: true
-    third_party_settings: {  }
   name:
     type: string_textfield
-    weight: -4
+    weight: 0
     region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  user_id:
-    type: entity_reference_autocomplete
-    weight: 5
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    region: content
-    third_party_settings: {  }
-hidden: {  }
+hidden:
+  langcode: true
+  user_id: true
