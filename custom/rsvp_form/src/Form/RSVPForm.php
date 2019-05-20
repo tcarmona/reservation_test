@@ -28,6 +28,7 @@ class RSVPForm extends FormBase {
       '#maxlength' => 64,
       '#size' => 64,
       '#weight' => '0',
+      '#required' => TRUE,
     ];
     $form['email'] = [
       '#type' => 'textfield',
@@ -35,6 +36,7 @@ class RSVPForm extends FormBase {
       '#maxlength' => 64,
       '#size' => 64,
       '#weight' => '0',
+      '#required' => TRUE,
     ];
 
     // Load the event id from the current event, if any
