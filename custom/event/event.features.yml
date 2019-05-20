@@ -1,0 +1,5 @@
+excluded:
+  - field.field.reservation.reservation.field_event
+  - core.entity_view_display.reservation.reservation.default
+  - core.entity_form_display.reservation.reservation.default
+  - field.storage.reservation.field_event
