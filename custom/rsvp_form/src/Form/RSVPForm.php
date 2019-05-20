@@ -39,11 +39,11 @@ class RSVPForm extends FormBase {
       '#required' => TRUE,
     ];
 
-    // Load the event id from the current event, if any
+    // Load the event name from the current event, if any
     $node = \Drupal::routeMatch()->getParameter('node');
     $form['event'] = [
       '#type' => 'hidden',
-      '#value' => ($node->id()) ? : null,
+      '#value' => ($node->id()) ? : "No event selected",
     ];
 
     $form['submit'] = [
