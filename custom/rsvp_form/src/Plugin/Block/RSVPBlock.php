@@ -2,7 +2,9 @@
 
 namespace Drupal\rsvp_form\Plugin\Block;
 
+use Drupal\Core\Form\FormInterface;
 use Drupal\Core\Block\BlockBase;
+use Drupal\rsvp_form\Form\RSVPForm;
 
 /**
  * Provides a 'RSVPBlock' block.
@@ -15,13 +17,12 @@ use Drupal\Core\Block\BlockBase;
 class RSVPBlock extends BlockBase {
 
   /**
+   * Get the RSVP form inside the block*
    * {@inheritdoc}
    */
   public function build() {
-    $build = [];
-    $build['rsvpblock']['#markup'] = 'Implement RSVPBlock.';
-
-    return $build;
+    $builder = \Drupal::formBuilder();
+    $form = $builder->getForm(RSVPForm::class);
+    return $form;
   }
-
 }

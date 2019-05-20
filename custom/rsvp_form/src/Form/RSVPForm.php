@@ -36,6 +36,14 @@ class RSVPForm extends FormBase {
       '#size' => 64,
       '#weight' => '0',
     ];
+
+    // Load the event id from the current event, if any
+    $node = \Drupal::routeMatch()->getParameter('node');
+    $form['event'] = [
+      '#type' => 'hidden',
+      '#value' => ($node->id()) ? : null,
+    ];
+
     $form['submit'] = [
       '#type' => 'submit',
       '#value' => $this->t('Submit'),
@@ -48,6 +56,10 @@ class RSVPForm extends FormBase {
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
+    // Validate the user email
+    if (!\Drupal::service('email.validator')->isValid($form_state->getValue("email"))) {
+      $form_state->setErrorByName("email", t("Please provide a valid email"));
+    }
     parent::validateForm($form, $form_state);
   }
 
@@ -55,11 +67,15 @@ class RSVPForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    // Display result.
-    foreach ($form_state->getValues() as $key => $value) {
-      drupal_set_message($key . ': ' . $value);
-    }
-
+    // Save the reservation
+    $data = [
+      'name' => $form_state->getValue("name"),
+      'field_email' => $form_state->getValue("email"),
+      'field_event' => $form_state->getValue("event"),
+    ];
+    $reservation = entity_create('reservation', $data);
+    $reservation->save();
+    drupal_set_message(t("Reservation sent sucessfully. Hope to see you soon!"));
   }
 
 }
