@@ -1,4 +1,4 @@
-name: 'RSVP Form'
+name: 'Reservation Block'
 type: module
 description: 'Provides a RSVP block for your events'
 core: 8.x
@@ -8,6 +8,6 @@ dependencies:
   - event
   - field
   - node
-  - rsvp_form
   - user
   - views
+  - features
