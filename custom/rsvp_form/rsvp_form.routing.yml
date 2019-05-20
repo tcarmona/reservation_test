@@ -1,0 +1,9 @@
+
+rsvp_form.rsvp_form:
+  path: '/rsvp_form/form/r_s_v_p'
+  defaults:
+    _form: '\Drupal\rsvp_form\Form\RSVPForm'
+    _title: 'RSVPForm'
+  requirements:
+    _access: 'TRUE'
+  

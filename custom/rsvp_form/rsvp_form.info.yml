@@ -1,0 +1,13 @@
+name: 'Reservation Block'
+type: module
+description: 'Provides a RSVP block for your events'
+core: 8.x
+package: Custom
+dependencies:
+  - block
+  - event
+  - field
+  - node
+  - user
+  - views
+  - features
